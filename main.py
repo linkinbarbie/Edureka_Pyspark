@@ -349,7 +349,10 @@ print("Your input is "+ inputStr)
 #Opening a file
 #To manipulate a file in python you need top open it
 
-
+spec_char = []
+for i in range(35, 65):
+    spec_char.append(chr(i))
+print(spec_char)
 
 
 
