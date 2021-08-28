@@ -41,3 +41,13 @@ kinbarb10edu --driver 'com.mysql.jdbc.Driver' --username linkinbarb10edu --passw
 # SQOOP command to list databases
 sqoop list-databases --connect jdbc:mysql://ip-10-1-1-204.ap-south-1.compute.internal/lin
 kinbarb10edu --driver 'com.mysql.jdbc.Driver' --username linkinbarb10edu --password MaroonEagle68@
+
+#SQOOP Command for codegen -- used to create data access objects
+sqoop codegen --connect jdbc:mysql://ip-10-1-1-204.ap-south-1.compute.internal/
+me linkinbarb10edu --driver 'com.mysql.jdbc.Driver' --password MaroonEagle68@ --table CUSTOMERS
+
+#SQOOP command to evaluate your connection to RDMS - in this case i am running a query to check i have access to the MYSQL rdms
+
+sqoop eval --connect jdbc:mysql://ip-10-1-1-204.ap-south-1.compute.internal/linkinbarb
+10edu --driver 'com.mysql.jdbc.Driver' --username linkinbarb10edu --password MaroonEagle68@ --query 'select * from CUSTOM
+ERS'
