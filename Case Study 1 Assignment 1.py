@@ -81,10 +81,10 @@ if __name__ == "__main__":
 
 # 5.Transfer the sample dataset from RDBMS to HDFS
 sqoop export --verbose --connect jdbc:mysql://ip-10-1-1-204.ap-south-1.compute.internal/linkinbarb10edu --driver 'com
-.mysql.jdbc.Driver' --username linkinbarb10edu --password MaroonEagle68@ --table FINAL_DF3 --m 1 --export-dir '/user/linkinbarb10edu/FINAL_FROM_DF2.csv'
+.mysql.jdbc.Driver' --username linkinbarb10edu --password xxxxxxx --table FINAL_DF3 --m 1 --export-dir '/user/linkinbarb10edu/FINAL_FROM_DF2.csv'
 
 # 6.Validate the loaded data by comparing the statistics of data both in source and HDFS
-sqoop eval --connect jdbc:mysql://ip-10-1-1-204.ap-south-1.compute.internal/linkinbarb10edu --driver 'com.mysql.jdbc.Driver' --username linkinbarb10edu --password MaroonEagle68
+sqoop eval --connect jdbc:mysql://ip-10-1-1-204.ap-south-1.compute.internal/linkinbarb10edu --driver 'com.mysql.jdbc.Driver' --username linkinbarb10edu --password xxxxxx
 @ --query 'SELECT COUNT(*) FROM FINAL_DF3'; #OUTPUTS 846404 which compared  to the HDFS count is correct. I also checked the statistical logs provided by the HDFS run and the Import run.
 
 # 7.Create a new directory EQ in HDFS and transfer the data where series is EQ
@@ -96,6 +96,6 @@ UPDATE FINAL_DF3 SET TOTALTRADES = 0 WHERE TOTALTRADES <= 500;
 
 #8b: Transfer the updated table to HDFS
 sqoop import --connect jdbc:mysql://ip-10-1-1-204.ap-south-1.compute.inte
-rnal/linkinbarb10edu --driver 'com.mysql.jdbc.Driver' --username linkinbarb10edu --password MaroonEagle68@ -
+rnal/linkinbarb10edu --driver 'com.mysql.jdbc.Driver' --username linkinbarb10edu --password xxxxxxxx@ -
 -query 'SELECT * FROM FINAL_DF3 WHERE $CONDITIONS AND TOTALTRADES = 0' --m 1 --target-dir '/user/linkinbarb1
 0edu/EQ_LE500';
